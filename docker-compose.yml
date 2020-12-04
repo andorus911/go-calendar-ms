@@ -1,0 +1,39 @@
+version: '3.6'
+
+services:
+  api:
+    build: ./api-ms
+    command: ./api-ms --config config.yaml
+    ports:
+      - 58053:58053
+    depends_on:
+      - db
+
+  db:
+    restart: always
+    image: postgres
+    volumes:
+#      - ./.database/postgres/data:/var/lib/postgresql/data
+      - ./api-ms/tools/postgres/001.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5436:5432
+
+  reminder:
+    build: ./sender-ms
+    command: ./sender-ms --config config.yaml
+    depends_on:
+      - rabbit
+
+  scheduler:
+    build: ./scheduler-ms
+    command: ./scheduler-ms --config config.yaml
+    depends_on:
+      - rabbit
+
+  rabbit:
+    restart: always
+    image: rabbitmq
+#    environment:
+#      - RABBITMQ_PASSWORD=postgres
