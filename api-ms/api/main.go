@@ -3,8 +3,8 @@ package api
 import (
 	"context"
 	"encoding/json"
-	"go-calendar-ms/api-ms/tools/domain/models"
-	"go-calendar-ms/api-ms/tools/domain/services"
+	"github.com/andorus911/go-calendar-ms/api-ms/tools/domain/models"
+	"github.com/andorus911/go-calendar-ms/api-ms/tools/domain/services"
 	"go.uber.org/zap"
 	"net/http"
 	"strconv"

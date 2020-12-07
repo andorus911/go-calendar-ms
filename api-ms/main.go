@@ -4,11 +4,11 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"github.com/andorus911/go-calendar-ms/api-ms/api"
+	"github.com/andorus911/go-calendar-ms/api-ms/logger"
+	"github.com/andorus911/go-calendar-ms/api-ms/tools/domain/services"
+	"github.com/andorus911/go-calendar-ms/api-ms/tools/postgres"
 	"github.com/spf13/viper"
-	"go-calendar-ms/api-ms/api"
-	"go-calendar-ms/api-ms/logger"
-	"go-calendar-ms/api-ms/tools/domain/services"
-	"go-calendar-ms/api-ms/tools/postgres"
 	"log"
 )
 

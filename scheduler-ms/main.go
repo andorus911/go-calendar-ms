@@ -5,8 +5,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/spf13/viper"
-	"go-calendar-ms/api-ms/logger"
-	postgres "go-calendar-ms/api-ms/tools/postgres"
+	"github.com/andorus911/go-calendar-ms/api-ms/logger"
+	postgres "github.com/andorus911/go-calendar-ms/api-ms/tools/postgres"
 	"log"
 )
 

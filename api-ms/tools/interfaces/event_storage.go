@@ -2,7 +2,7 @@ package interfaces
 
 import (
 	"context"
-	"go-calendar-ms/api-ms/tools/domain/models"
+	"github.com/andorus911/go-calendar-ms/api-ms/tools/domain/models"
 	"time"
 )
 

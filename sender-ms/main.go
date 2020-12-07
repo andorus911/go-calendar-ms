@@ -4,7 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"go-calendar-ms/api-ms/logger"
+	"github.com/andorus911/go-calendar-ms/api-ms/logger"
 	"github.com/spf13/viper"
 	"log"
 )

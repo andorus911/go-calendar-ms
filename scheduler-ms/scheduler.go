@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"go-calendar-ms/api-ms/tools/postgres"
+	"github.com/andorus911/go-calendar-ms/api-ms/tools/postgres"
 	"github.com/streadway/amqp"
 	"go.uber.org/zap"
 	"time"
