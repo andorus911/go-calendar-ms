@@ -1,4 +1,4 @@
-module go-calendar-ms
+module github.com/andorus911/go-calendar-ms
 
 go 1.15
 
