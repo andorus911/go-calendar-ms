@@ -3,9 +3,9 @@ package api
 import (
 	"context"
 	"encoding/json"
+	"go-calendar-ms/api-ms/tools/domain/models"
+	"go-calendar-ms/api-ms/tools/domain/services"
 	"go.uber.org/zap"
-	"go_learning_homework/go-calendar-ms/api-ms/internal/domain/models"
-	"go_learning_homework/go-calendar-ms/api-ms/internal/domain/services"
 	"net/http"
 	"strconv"
 	"time"
@@ -39,15 +39,15 @@ func StartServer(httpListen string, logger zap.Logger, eventService *services.Ev
 	mux.HandleFunc("/event/myList", evh.getList)
 
 	server := http.Server{
-		Addr: httpListen,
+		Addr:    httpListen,
 		Handler: mux,
 	}
 
 	//go func() {
-		err := server.ListenAndServe()
-		if err != nil {
-			lg.Fatal(err.Error())
-		}
+	err := server.ListenAndServe()
+	if err != nil {
+		lg.Fatal(err.Error())
+	}
 	//}()
 }
 
@@ -90,7 +90,7 @@ func (h *EventHandler) create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ctx, _ := context.WithTimeout(context.Background(), 2 * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
 	event, err := evService.CreateEvent(ctx, title, description, owner, startTime, endTime)
 	if err != nil {
 		lg.Error("event creating error: " + err.Error())
@@ -148,7 +148,7 @@ func (h *EventHandler) update(w http.ResponseWriter, r *http.Request) {
 		editEvent.EndTime = &endTime
 	}
 
-	ctx, _ := context.WithTimeout(context.Background(), 2 * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
 	event, err := evService.EditEvent(ctx, id, editEvent)
 	if err != nil {
 		lg.Error("event editing error: " + err.Error())
@@ -180,7 +180,7 @@ func (h *EventHandler) delete(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 	}
 
-	ctx, _ := context.WithTimeout(context.Background(), 2 * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
 	err = evService.RemoveEventById(ctx, id)
 	if err != nil {
 		lg.Error("event editing error: " + err.Error())
@@ -212,7 +212,7 @@ func (h *EventHandler) getList(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 	}
 
-	ctx, _ := context.WithTimeout(context.Background(), 555 * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 555*time.Second)
 	events, err := evService.ShowOwnersEvents(ctx, owner)
 	if err != nil {
 		lg.Error("event editing error: " + err.Error())

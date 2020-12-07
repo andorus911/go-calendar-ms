@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"github.com/jackc/pgtype"
 	_ "github.com/jackc/pgx/stdlib"
+	"go-calendar-ms/api-ms/tools/domain/models"
 	"go.uber.org/zap"
-	"go_learning_homework/go-calendar-ms/api-ms/internal/domain/models"
 	"time"
 )
 

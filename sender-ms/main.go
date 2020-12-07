@@ -4,19 +4,19 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"go-calendar-ms/api-ms/logger"
 	"github.com/spf13/viper"
-	"go_learning_homework/go-calendar-ms/api-ms/logger"
 	"log"
 )
 
 type config struct {
-	LogFile    string `mapstructure:"log_file"`
-	LogLevel   string `mapstructure:"log_level"`
+	LogFile  string `mapstructure:"log_file"`
+	LogLevel string `mapstructure:"log_level"`
 
-	RabbitUser string `mapstructure:"rabbit_user"`
+	RabbitUser     string `mapstructure:"rabbit_user"`
 	RabbitPassword string `mapstructure:"rabbit_pass"`
-	RabbitHost string `mapstructure:"rabbit_host"`
-	RabbitPort string `mapstructure:"rabbit_port"`
+	RabbitHost     string `mapstructure:"rabbit_host"`
+	RabbitPort     string `mapstructure:"rabbit_port"`
 }
 
 func main() {

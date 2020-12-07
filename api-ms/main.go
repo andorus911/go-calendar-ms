@@ -5,10 +5,10 @@ import (
 	"flag"
 	"fmt"
 	"github.com/spf13/viper"
-	"go_learning_homework/go-calendar-ms/api-ms/api"
-	"go_learning_homework/go-calendar-ms/api-ms/internal/domain/services"
-	"go_learning_homework/go-calendar-ms/api-ms/logger"
-	"go_learning_homework/go-calendar-ms/api-ms/tools/postgres"
+	"go-calendar-ms/api-ms/api"
+	"go-calendar-ms/api-ms/logger"
+	"go-calendar-ms/api-ms/tools/domain/services"
+	"go-calendar-ms/api-ms/tools/postgres"
 	"log"
 )
 
@@ -17,11 +17,11 @@ type config struct {
 	LogFile    string `mapstructure:"log_file"`
 	LogLevel   string `mapstructure:"log_level"`
 
-	SqlUser string `mapstructure:"sql_user"`
+	SqlUser     string `mapstructure:"sql_user"`
 	SqlPassword string `mapstructure:"sql_pass"`
-	SqlHost string `mapstructure:"sql_host"`
-	SqlPort string `mapstructure:"sql_port"`
-	DbName string `mapstructure:"db_name"`
+	SqlHost     string `mapstructure:"sql_host"`
+	SqlPort     string `mapstructure:"sql_port"`
+	DbName      string `mapstructure:"db_name"`
 }
 
 func main() {

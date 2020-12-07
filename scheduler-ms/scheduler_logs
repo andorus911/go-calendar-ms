@@ -1,3 +1,0 @@
-2020-11-27T17:02:38.141+0300	INFO	logger/logger.go:33	log is created
-2020-11-27T17:02:38.460+0300	INFO	scheduler-ms/scheduler.go:51	Checking for events
-2020-11-27T17:04:00.505+0300	INFO	scheduler-ms/scheduler.go:65	 [x] Sent {"Id":64,"Title":"1234","Description":"111111222222","Owner":2,"StartTime":"2020-11-27T14:09:00Z","EndTime":"2020-11-27T15:00:00Z"}

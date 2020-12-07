@@ -2,7 +2,7 @@ package interfaces
 
 import (
 	"context"
-	"go_learning_homework/go-calendar-ms/api-ms/internal/domain/models"
+	"go-calendar-ms/api-ms/tools/domain/models"
 	"time"
 )
 

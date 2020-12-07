@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"go-calendar-ms/api-ms/tools/postgres"
 	"github.com/streadway/amqp"
 	"go.uber.org/zap"
-	"go_learning_homework/go-calendar-ms/api-ms/tools/postgres"
 	"time"
 )
 
@@ -37,7 +37,7 @@ func RunScheduler(ctx context.Context, log *zap.Logger, db postgres.DB, rUsr, rP
 		false,
 		false,
 		nil,
-		)
+	)
 	failOnError(err, "failed to declare a queue")
 
 	toRemind := make(chan interface{})
@@ -75,7 +75,7 @@ func checkDB(ctx context.Context, toRemind chan<- interface{}, db postgres.DB) {
 	for _, e := range events {
 		now := time.Now()
 		sub := e.StartTime.Sub(now)
-		min := 5 * time.Minute - time.Second
+		min := 5*time.Minute - time.Second
 		max := 5 * time.Minute
 		if sub > min && sub < max {
 			toRemind <- e
