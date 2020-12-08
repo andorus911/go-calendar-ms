@@ -35,5 +35,5 @@ services:
   rabbit:
     restart: always
     image: rabbitmq
-#    environment:
-#      - RABBITMQ_PASSWORD=postgres
+    environment:
+      - RABBITMQ_PASSWORD=guest

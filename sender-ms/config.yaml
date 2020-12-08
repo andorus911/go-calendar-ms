@@ -4,5 +4,6 @@ log_level: debug
 
 rabbit_user: guest
 rabbit_pass: guest
-rabbit_host: rabbitmq
+#rabbit_host: rabbitmq
+rabbit_host: rabbit
 rabbit_port: 5672
