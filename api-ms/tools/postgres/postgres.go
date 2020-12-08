@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"github.com/andorus911/go-calendar-ms/api-ms/tools/domain/models"
 	"github.com/jackc/pgtype"
 	_ "github.com/jackc/pgx/stdlib"
-	"github.com/andorus911/go-calendar-ms/api-ms/tools/domain/models"
 	"go.uber.org/zap"
 	"time"
 )
@@ -18,6 +18,9 @@ var d DB
 
 var db *sql.DB
 var lg *zap.Logger
+
+const PG_DATE_LAYOUT = "2006-01-02"
+const PG_TIME_LAYOUT = "15:04:05"
 
 func InitDB(ctx context.Context, zlg *zap.Logger, sqlUser, sqlPassword, sqlHost, sqlPort, dbName string) (DB, error) {
 	// data source name
@@ -47,13 +50,13 @@ func CloseDBCxn() error {
 func (d DB) SaveEvent(ctx context.Context, event models.Event) (int64, error) {
 	query := `insert into events(owner, title, descr, start_date, start_time, end_date, end_time) values ($1, $2, $3, $4, $5, $6, $7) returning id;`
 
-	year, month, day := event.StartTime.Date()
-	startDate := fmt.Sprintf("%v-%v-%v", year, month, day)
-	year, month, day = event.EndTime.Date()
-	endDate := fmt.Sprintf("%v-%v-%v", year, month, day)
+	startDate := event.EndTime.Format(PG_DATE_LAYOUT)
+	startTime := event.StartTime.Format(PG_TIME_LAYOUT)
+	endDate := event.EndTime.Format(PG_DATE_LAYOUT)
+	endTime := event.EndTime.Format(PG_TIME_LAYOUT)
 
 	// is it ok send Time as pgTime?
-	rows, err := db.QueryContext(ctx, query, event.Owner, event.Title, event.Description, startDate, event.StartTime, endDate, event.EndTime)
+	rows, err := db.QueryContext(ctx, query, event.Owner, event.Title, event.Description, startDate, startTime, endDate, endTime)
 	if err != nil {
 		lg.Error("failed to load query: " + err.Error())
 		return 0, err
