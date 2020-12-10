@@ -3,6 +3,7 @@ version: '3.6'
 services:
   api:
     build: ./api-ms
+#    command: ./wait-for-postgres.sh db ./api-ms --config config.yaml
     command: ./api-ms --config config.yaml
     ports:
       - 58053:58053
